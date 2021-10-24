@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_api2basicauth_user_index>
+        <reference name="content">
+            <block type="elidrissidev_api2basicauth/adminhtml_user" name="user.grid_container" />
+        </reference>
+    </adminhtml_api2basicauth_user_index>
+</layout>

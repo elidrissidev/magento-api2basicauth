@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Elidrissidev_Api2BasicAuth>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Api2 />
+            </depends>
+        </Elidrissidev_Api2BasicAuth>
+    </modules>
+</config>
