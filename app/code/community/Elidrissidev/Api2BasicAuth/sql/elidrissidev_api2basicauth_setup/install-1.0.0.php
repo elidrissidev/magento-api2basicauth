@@ -1,4 +1,9 @@
 <?php
+/**
+ * @package Elidrissidev_Api2BasicAuth
+ * @author  Mohamed ELIDRISSI <mohamed@elidrissi.dev>
+ * @license https://opensource.org/licenses/MIT  MIT License
+ */
 
 /** @var Mage_Core_Model_Resource_Setup $installer */
 $installer = $this;
@@ -8,9 +13,9 @@ $adapter = $installer->getConnection();
 $installer->startSetup();
 
 /**
- * Create table 'elidrissidev_api2basicauth/user'
+ * Create table 'elidrissidev_api2basicauth/restuser'
  */
-$table = $adapter->newTable($installer->getTable('elidrissidev_api2basicauth/user'))
+$table = $adapter->newTable($installer->getTable('elidrissidev_api2basicauth/restuser'))
     ->addColumn(
         'entity_id',
         Varien_Db_Ddl_Table::TYPE_INTEGER,
@@ -21,7 +26,7 @@ $table = $adapter->newTable($installer->getTable('elidrissidev_api2basicauth/use
             'nullable' => false,
             'primary'  => true
         ),
-        'User ID'
+        'REST User ID'
     )
     ->addColumn(
         'username',
@@ -54,7 +59,7 @@ $table = $adapter->newTable($installer->getTable('elidrissidev_api2basicauth/use
         null,
         array(
             'nullable' => false,
-            'default'  => 'CURRENT_TIMESTAMP'
+            'default'  => Varien_Db_Ddl_Table::TIMESTAMP_INIT
         ),
         'Created At'
     )
@@ -62,86 +67,86 @@ $table = $adapter->newTable($installer->getTable('elidrissidev_api2basicauth/use
         'updated_at',
         Varien_Db_Ddl_Table::TYPE_TIMESTAMP,
         null,
-        array('nullable' => true),
+        array(
+            'nullable' => true,
+            'default'  => Varien_Db_Ddl_Table::TIMESTAMP_UPDATE
+        ),
         'Updated At'
     )
-    ->setComment('Api2 Users');
+    ->addIndex(
+        $installer->getIdxName(
+            $installer->getTable('elidrissidev_api2basicauth/restuser'),
+            'username',
+            Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE
+        ),
+        'username',
+        array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE)
+    )
+    ->setComment('REST Users');
 
 $adapter->createTable($table);
 
 /**
- * Create table 'elidrissidev_api2basicauth/acl_attributes'
+ * Create table 'elidrissidev_api2basicauth/acl_restuser'
  */
-$table = $adapter->newTable($installer->getTable('elidrissidev_api2basicauth/acl_attribute'))
+$table = $adapter->newTable($installer->getTable('elidrissidev_api2basicauth/acl_restuser'))
     ->addColumn(
-        'entity_id',
+        'restuser_id',
         Varien_Db_Ddl_Table::TYPE_INTEGER,
         null,
         array(
-            'identity' => true,
             'unsigned' => true,
             'nullable' => false,
             'primary'  => true
         ),
-        'Entity ID'
+        'REST User ID'
     )
     ->addColumn(
-        'user_id',
+        'role_id',
         Varien_Db_Ddl_Table::TYPE_INTEGER,
         null,
         array(
             'unsigned' => true,
             'nullable' => false
         ),
-        'User ID'
+        'Role ID'
     )
-    ->addColumn(
-        'resource_id',
-        Varien_Db_Ddl_Table::TYPE_TEXT,
-        255,
-        array('nullable' => false),
-        'Resource ID'
-    )
-    ->addColumn(
-        'operation',
-        Varien_Db_Ddl_Table::TYPE_TEXT,
-        20,
-        array('nullable' => false),
-        'Operation'
-    )
-    ->addColumn(
-        'allowed_attributes',
-        Varien_Db_Ddl_Table::TYPE_TEXT,
-        null,
-        array(
-            'nullable' => true,
-            'default'  => null
+    ->addIndex(
+        $installer->getIdxName(
+            $installer->getTable('elidrissidev_api2basicauth/acl_restuser'),
+            'restuser_id',
+            Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE
         ),
-        'Allowed Attributes'
+        'restuser_id',
+        array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE)
     )
     ->addForeignKey(
         $installer->getFkName(
-            'elidrissidev_api2basicauth/acl_attribute',
-            'user_id',
-            'elidrissidev_api2basicauth/user',
+            'elidrissidev_api2basicauth/acl_restuser',
+            'restuser_id',
+            'elidrissidev_api2basicauth/restuser',
             'entity_id'
         ),
-        'user_id',
-        $installer->getTable('elidrissidev_api2basicauth/user'),
+        'restuser_id',
+        $installer->getTable('elidrissidev_api2basicauth/restuser'),
         'entity_id',
         Varien_Db_Ddl_Table::ACTION_CASCADE,
         Varien_Db_Ddl_Table::ACTION_CASCADE
     )
-    ->addIndex(
-        $installer->getIdxName(
-            $installer->getTable('elidrissidev_api2basicauth/acl_attribute'),
-            array('user_id', 'resource_id', 'operation'),
-            Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE
+    ->addForeignKey(
+        $installer->getFkName(
+            'elidrissidev_api2basicauth/acl_restuser',
+            'role_id',
+            'api2/acl_role',
+            'entity_id'
         ),
-        array('user_id', 'resource_id', 'operation'),
-        array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE)
+        'role_id',
+        $installer->getTable('api2/acl_role'),
+        'entity_id',
+        Varien_Db_Ddl_Table::ACTION_CASCADE,
+        Varien_Db_Ddl_Table::ACTION_CASCADE
     )
-    ->setComment('Api2 User Acl Attributes');
+    ->setComment('REST Users ACL Role');
 
 $adapter->createTable($table);
 

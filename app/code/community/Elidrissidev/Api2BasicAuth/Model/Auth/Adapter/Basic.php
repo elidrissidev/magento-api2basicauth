@@ -2,9 +2,10 @@
 
 /**
  * Basic Auth Scheme Adapter
- * 
- * @author  Mohamed ELIDRISSI
+ *
  * @package Elidrissidev_Api2BasicAuth
+ * @author  Mohamed ELIDRISSI <mohamed@elidrissi.dev>
+ * @license https://opensource.org/licenses/MIT  MIT License
  */
 class Elidrissidev_Api2BasicAuth_Model_Auth_Adapter_Basic extends Mage_Api2_Model_Auth_Adapter_Abstract
 {
@@ -15,7 +16,7 @@ class Elidrissidev_Api2BasicAuth_Model_Auth_Adapter_Basic extends Mage_Api2_Mode
     {
         $userParams = new stdClass;
         $userParams->id = null;
-        $userParams->type = Elidrissidev_Api2BasicAuth_Model_Auth_User_Apiuser::USER_TYPE;
+        $userParams->type = Elidrissidev_Api2BasicAuth_Model_Auth_User_Restuser::USER_TYPE;
 
         try {
             $authHeaderValue = $request->getHeader('Authorization');
@@ -28,18 +29,18 @@ class Elidrissidev_Api2BasicAuth_Model_Auth_Adapter_Basic extends Mage_Api2_Mode
 
             list($username, $password) = $credentials;
 
-            /** @var Elidrissidev_Api2BasicAuth_Model_User $apiUser */
-            $apiUser = Mage::getModel('elidrissidev_api2basicauth/user')->loadByUsername($username);
+            /** @var Elidrissidev_Api2BasicAuth_Model_Restuser $restuser */
+            $restuser = Mage::getModel('elidrissidev_api2basicauth/restuser')->loadByUsername($username);
 
             if (
-                !$apiUser->getId() ||
-                !Mage::helper('core')->validateHash($password, $apiUser->getApiKey()) ||
-                !$apiUser->getIsActive()
+                !$restuser->getId()
+                || !Mage::helper('core')->validateHash($password, $restuser->getApiKey())
+                || !$restuser->getIsActive()
             ) {
                 throw new Exception('Invalid credentials or user not active');
             }
 
-            $userParams->id = $apiUser->getId();
+            $userParams->id = $restuser->getId();
         } catch (Exception $e) {
             Mage::logException($e);
             throw new Mage_Api2_Exception('Access denied', Mage_Api2_Model_Server::HTTP_UNAUTHORIZED);

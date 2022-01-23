@@ -1,4 +1,11 @@
 <?xml version="1.0" ?>
+<!--
+/**
+ * @package Elidrissidev_Api2BasicAuth
+ * @author  Mohamed ELIDRISSI <mohamed@elidrissi.dev>
+ * @license https://opensource.org/licenses/MIT  MIT License
+ */
+-->
 <config>
     <modules>
         <Elidrissidev_Api2BasicAuth>

@@ -1,18 +1,59 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * @package Elidrissidev_Api2BasicAuth
+ * @author  Mohamed ELIDRISSI <mohamed@elidrissi.dev>
+ * @license https://opensource.org/licenses/MIT  MIT License
+ */
+-->
 <config>
     <menu>
         <system>
             <children>
                 <api>
                     <children>
-                        <rest_users translate="title" module="elidrissidev_api2basicauth">
+                        <rest_users translate="title">
                             <title>REST - Users</title>
-                            <sort_order>25</sort_order>
-                            <action>adminhtml/api2basicauth_user</action>
+                            <sort_order>20</sort_order>
+                            <action>adminhtml/api2basicauth_restuser</action>
                         </rest_users>
                     </children>
                 </api>
             </children>
         </system>
     </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <api>
+                                <children>
+                                    <rest_users translate="title">
+                                        <title>REST - Users</title>
+                                        <sort_order>20</sort_order>
+                                        <children>
+                                            <create translate="title">
+                                                <title>Create</title>
+                                                <sort_order>10</sort_order>
+                                            </create>
+                                            <edit translate="title">
+                                                <title>Edit</title>
+                                                <sort_order>20</sort_order>
+                                            </edit>
+                                            <delete translate="title">
+                                                <title>Delete</title>
+                                                <sort_order>30</sort_order>
+                                            </delete>
+                                        </children>
+                                    </rest_users>
+                                </children>
+                            </api>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
 </config>

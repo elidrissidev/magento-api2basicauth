@@ -1,4 +1,11 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * @package Elidrissidev_Api2BasicAuth
+ * @author  Mohamed ELIDRISSI <mohamed@elidrissi.dev>
+ * @license https://opensource.org/licenses/MIT  MIT License
+ */
+-->
 <config>
     <modules>
         <Elidrissidev_Api2BasicAuth>
@@ -24,12 +31,12 @@
             <elidrissidev_api2basicauth_resource>
                 <class>Elidrissidev_Api2BasicAuth_Model_Resource</class>
                 <entities>
-                    <user>
-                        <table>elidrissidev_api2basicauth_user</table>
-                    </user>
-                    <acl_attribute>
-                        <table>elidrissidev_api2basicauth_acl_attribute</table>
-                    </acl_attribute>
+                    <restuser>
+                        <table>elidrissidev_api2basicauth_restuser</table>
+                    </restuser>
+                    <acl_restuser>
+                        <table>elidrissidev_api2basicauth_acl_restuser</table>
+                    </acl_restuser>
                 </entities>
             </elidrissidev_api2basicauth_resource>
         </models>
@@ -42,7 +49,7 @@
         </resources>
         <api2>
             <auth_adapters>
-                <basic module="elidrissidev_api2basicauth" translate="label">
+                <basic translate="label">
                     <model>elidrissidev_api2basicauth/auth_adapter_basic</model>
                     <label>Basic</label>
                     <enabled>1</enabled>
@@ -50,10 +57,10 @@
                 </basic>
             </auth_adapters>
             <user_types>
-                <apiuser>
-                    <model>elidrissidev_api2basicauth/auth_user_apiuser</model>
+                <restuser>
+                    <model>elidrissidev_api2basicauth/auth_user_restuser</model>
                     <allowed>1</allowed>
-                </apiuser>
+                </restuser>
             </user_types>
         </api2>
     </global>
@@ -76,5 +83,14 @@
                 </elidrissidev_api2basicauth>
             </updates>
         </layout>
+        <translate>
+            <modules>
+                <Elidrissidev_Api2BasicAuth>
+                    <files>
+                        <default>Elidrissidev_Api2BasicAuth.csv</default>
+                    </files>
+                </Elidrissidev_Api2BasicAuth>
+            </modules>
+        </translate>
     </adminhtml>
 </config>

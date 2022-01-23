@@ -1,8 +1,45 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * @package Elidrissidev_Api2BasicAuth
+ * @author  Mohamed ELIDRISSI <mohamed@elidrissi.dev>
+ * @license https://opensource.org/licenses/MIT  MIT License
+ */
+-->
 <layout>
-    <adminhtml_api2basicauth_user_index>
+    <adminhtml_api2basicauth_restuser_index>
         <reference name="content">
-            <block type="elidrissidev_api2basicauth/adminhtml_user" name="user.grid_container" />
+            <block type="elidrissidev_api2basicauth/adminhtml_restuser" name="api2basicauth.restuser.grid.container" />
         </reference>
-    </adminhtml_api2basicauth_user_index>
+    </adminhtml_api2basicauth_restuser_index>
+
+    <adminhtml_api2basicauth_restuser_edit>
+        <reference name="left">
+            <block type="elidrissidev_api2basicauth/adminhtml_restuser_edit_tabs" name="api2basicauth.restuser.tabs">
+                <action method="addTab">
+                    <id>restuser_section_general</id>
+                    <block>elidrissidev_api2basicauth/adminhtml_restuser_edit_tab_general</block>
+                </action>
+                <action method="addTab">
+                    <id>restuser_section_role</id>
+                    <block>elidrissidev_api2basicauth/adminhtml_restuser_edit_tab_role</block>
+                </action>
+            </block>
+        </reference>
+        <reference name="content">
+            <block type="elidrissidev_api2basicauth/adminhtml_restuser_edit" name="api2basicauth.restuser.edit" />
+        </reference>
+    </adminhtml_api2basicauth_restuser_edit>
+
+    <adminhtml_api2basicauth_restuser_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="elidrissidev_api2basicauth/adminhtml_restuser_grid" name="api2basicauth.restuser.grid" />
+        </block>
+    </adminhtml_api2basicauth_restuser_grid>
+
+    <adminhtml_api2basicauth_restuser_rolesgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="elidrissidev_api2basicauth/adminhtml_restuser_edit_tab_role" name="api2basicauth.restuser.edit.tab.role" />
+        </block>
+    </adminhtml_api2basicauth_restuser_rolesgrid>
 </layout>
