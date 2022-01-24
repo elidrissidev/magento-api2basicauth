@@ -26,7 +26,7 @@ Similarly, you'll have to also decide which resource attributes your REST users 
 Now you're ready to issue your first request! But first, you'll have to generate your authentication token, that is done by joining your username and password (Api key) with a colon (`:`) and encoding them in `base64` (replace `<username>` and `<password>` with your own):
 
 ```sh
-$ php -r "echo base64('<username>:<password>') . PHP_EOL;"
+$ php -r "echo base64_encode('<username>:<password>') . PHP_EOL;"
 ```
 
 You can now issue requests using your token (replace `<token>` with your own):
