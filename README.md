@@ -8,7 +8,7 @@ This is a Magento 1.9/[OpenMage](https://github.com/openmage/magento-lts) extens
 
 2. Copy the `app` folder to the root of your magento store (choose the option to merge it with the existing content if prompted).
 
-3. Clear "Configuration" and "Web Services Configuration (api2.xml)" caches from the Admin panel.
+3. Go to `System / Cache Management` and click "Flush Magento Cache" button on the top.
 
 4. To verify if the installation was successfull, look for a new option in `System / Web Services` menu called `REST - Users`. If you can't see it, make sure your admin user has permissions.
 
