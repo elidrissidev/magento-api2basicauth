@@ -43,6 +43,10 @@ If you get `Access denied` error, check that the role assigned to your user has 
 
 Basic authentication is generally discouraged nowadays because it involves transfering user credentials over the network in `base64` encoding, which can easily be decoded and viewed in plaintext. It is highly recommended that you use it **only** with an encrypted connection, and **never** issue requests from the client side as to not expose user credentials.
 
+## Conflicting extensions
+
+- Magestore_Webpos: This extension rewrites the Api2 Acl system and ends up allowing access to all resources and attributes for every REST User, regardless of the assigned role. Also overrides some of the built-in routes like `/api/rest/orders`, but this can be fixed by some small changes in the module's `api2.xml`.
+
 ## Contributing
 
 Please feel free to open an Issue if you find any bug, or have something to suggest. Translations to other languages are very welcome :).
