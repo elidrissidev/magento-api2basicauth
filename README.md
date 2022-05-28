@@ -4,6 +4,8 @@ This is a Magento 1.9/[OpenMage](https://github.com/openmage/magento-lts) extens
 
 ## Installation
 
+### Manual
+
 1. Download the latest release and unpack it.
 
 2. Copy the `app` folder to the root of your magento store (choose the option to merge it with the existing content if prompted).
@@ -11,6 +13,15 @@ This is a Magento 1.9/[OpenMage](https://github.com/openmage/magento-lts) extens
 3. Go to `System / Cache Management` and click "Flush Magento Cache" button on the top.
 
 4. To verify if the installation was successfull, look for a new option in `System / Web Services` menu called `REST - Users`. If you can't see it, make sure your admin user has permissions.
+
+### Composer
+
+For OpenMage users, you can install this package easily by using composer:
+
+```sh
+$ composer require elidrissidev/magento-api2basicauth
+```
+
 
 Now you're ready to start using it!
 
