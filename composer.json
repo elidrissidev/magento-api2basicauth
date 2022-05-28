@@ -1,0 +1,67 @@
+{
+  "name": "elidrissidev/magento-api2basicauth",
+  "description": "HTTP Basic authentication support for Magento 1.9 and OpenMage's Api2.",
+  "version": "1.0.2",
+  "type": "magento-module",
+  "keywords": ["openmage", "openmage-module", "magento", "magento-module"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mohamed ELIDRISSI",
+      "email": "mohamed@elidrissi.dev",
+      "homepage": "https://github.com/elidrissidev",
+      "role": "Owner"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/elidrissidev/Elidrissidev_Api2BasicAuth/issues"
+  },
+  "funding": [
+    {
+      "type": "PayPal",
+      "url": "https://paypal.me/mohamedelidrissi98"
+    }
+  ],
+  "require": {
+    "php": ">=7.2.0",
+    "openmage/magento-lts": "^19.4.0"
+  },
+  "minimum-stability": "stable",
+  "extra": {
+    "map": [
+      ["app/code/community/Elidrissidev/Api2BasicAuth/Block/Adminhtml/Restuser.php", "app/code/community/Elidrissidev/Api2BasicAuth/Block/Adminhtml/Restuser.php"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/Block/Adminhtml/Restuser/Edit.php", "app/code/community/Elidrissidev/Api2BasicAuth/Block/Adminhtml/Restuser/Edit.php"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/Block/Adminhtml/Restuser/Grid.php", "app/code/community/Elidrissidev/Api2BasicAuth/Block/Adminhtml/Restuser/Grid.php"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/Block/Adminhtml/Restuser/Edit/Form.php", "app/code/community/Elidrissidev/Api2BasicAuth/Block/Adminhtml/Restuser/Edit/Form.php"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/Block/Adminhtml/Restuser/Edit/Tabs.php", "app/code/community/Elidrissidev/Api2BasicAuth/Block/Adminhtml/Restuser/Edit/Tabs.php"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/Block/Adminhtml/Restuser/Edit/Tab/General.php", "app/code/community/Elidrissidev/Api2BasicAuth/Block/Adminhtml/Restuser/Edit/Tab/General.php"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/Block/Adminhtml/Restuser/Edit/Tab/Role.php", "app/code/community/Elidrissidev/Api2BasicAuth/Block/Adminhtml/Restuser/Edit/Tab/Role.php"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/controllers/Adminhtml/Api2basicauth/RestuserController.php", "app/code/community/Elidrissidev/Api2BasicAuth/controllers/Adminhtml/Api2basicauth/RestuserController.php"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/etc/adminhtml.xml", "app/code/community/Elidrissidev/Api2BasicAuth/etc/adminhtml.xml"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/etc/api2.xml", "app/code/community/Elidrissidev/Api2BasicAuth/etc/api2.xml"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/etc/config.xml", "app/code/community/Elidrissidev/Api2BasicAuth/etc/config.xml"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/Helper/Data.php", "app/code/community/Elidrissidev/Api2BasicAuth/Helper/Data.php"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/Model/Auth/Adapter/Basic.php", "app/code/community/Elidrissidev/Api2BasicAuth/Model/Auth/Adapter/Basic.php"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/Model/Auth/User/Restuser.php", "app/code/community/Elidrissidev/Api2BasicAuth/Model/Auth/User/Restuser.php"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/Model/Resource/Restuser/Collection.php", "app/code/community/Elidrissidev/Api2BasicAuth/Model/Resource/Restuser/Collection.php"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/Model/Resource/Restuser.php", "app/code/community/Elidrissidev/Api2BasicAuth/Model/Resource/Restuser.php"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/Model/Restuser.php", "app/code/community/Elidrissidev/Api2BasicAuth/Model/Restuser.php"],
+      ["app/code/community/Elidrissidev/Api2BasicAuth/sql/elidrissidev_api2basicauth_setup/install-1.0.0.php", "app/code/community/Elidrissidev/Api2BasicAuth/sql/elidrissidev_api2basicauth_setup/install-1.0.0.php"],
+      ["app/code/local/Mage/Catalog/Model/Api2/Product/Category/Rest/Restuser/V1.php", "app/code/local/Mage/Catalog/Model/Api2/Product/Category/Rest/Restuser/V1.php"],
+      ["app/code/local/Mage/Catalog/Model/Api2/Product/Image/Rest/Restuser/V1.php", "app/code/local/Mage/Catalog/Model/Api2/Product/Image/Rest/Restuser/V1.php"],
+      ["app/code/local/Mage/Catalog/Model/Api2/Product/Rest/Restuser/V1.php", "app/code/local/Mage/Catalog/Model/Api2/Product/Rest/Restuser/V1.php"],
+      ["app/code/local/Mage/Catalog/Model/Api2/Product/Website/Rest/Restuser/V1.php", "app/code/local/Mage/Catalog/Model/Api2/Product/Website/Rest/Restuser/V1.php"],
+      ["app/code/local/Mage/CatalogInventory/Model/Api2/Stock/Item/Rest/Restuser/V1.php", "app/code/local/Mage/CatalogInventory/Model/Api2/Stock/Item/Rest/Restuser/V1.php"],
+      ["app/code/local/Mage/Customer/Model/Api2/Customer/Address/Rest/Restuser/V1.php", "app/code/local/Mage/Customer/Model/Api2/Customer/Address/Rest/Restuser/V1.php"],
+      ["app/code/local/Mage/Customer/Model/Api2/Customer/Rest/Restuser/V1.php", "app/code/local/Mage/Customer/Model/Api2/Customer/Rest/Restuser/V1.php"],
+      ["app/code/local/Mage/Sales/Model/Api2/Order/Address/Rest/Restuser/V1.php", "app/code/local/Mage/Sales/Model/Api2/Order/Address/Rest/Restuser/V1.php"],
+      ["app/code/local/Mage/Sales/Model/Api2/Order/Comment/Rest/Restuser/V1.php", "app/code/local/Mage/Sales/Model/Api2/Order/Comment/Rest/Restuser/V1.php"],
+      ["app/code/local/Mage/Sales/Model/Api2/Order/Item/Rest/Restuser/V1.php", "app/code/local/Mage/Sales/Model/Api2/Order/Item/Rest/Restuser/V1.php"],
+      ["app/code/local/Mage/Sales/Model/Api2/Order/Rest/Restuser/V1.php", "app/code/local/Mage/Sales/Model/Api2/Order/Rest/Restuser/V1.php"],
+      ["app/design/adminhtml/default/default/layout/elidrissidev_api2basicauth.xml", "app/design/adminhtml/default/default/layout/elidrissidev_api2basicauth.xml"],
+      ["app/etc/modules/Elidrissidev_Api2BasicAuth.xml", "app/etc/modules/Elidrissidev_Api2BasicAuth.xml"],
+      ["app/locale/en_US/Elidrissidev_Api2BasicAuth.csv", "app/locale/en_US/Elidrissidev_Api2BasicAuth.csv"]
+    ]
+  }
+}
+  
