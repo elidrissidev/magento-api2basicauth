@@ -139,7 +139,7 @@ class Elidrissidev_Api2BasicAuth_Adminhtml_Api2basicauth_RestuserController exte
             $this->_getSession()->addSuccess($this->__('The user has been saved.'));
 
             if ($back) {
-                $this->_redirect('*/*/edit', array('id' => $id));
+                $this->_redirect('*/*/edit', array('id' => $restuser->getId()));
             } else {
                 $this->_redirect('*/*/');
             }
