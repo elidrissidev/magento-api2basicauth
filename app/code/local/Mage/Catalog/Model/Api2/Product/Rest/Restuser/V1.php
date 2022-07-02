@@ -27,4 +27,12 @@ class Mage_Catalog_Model_Api2_Product_Rest_Restuser_V1 extends Mage_Catalog_Mode
         }
         return $this->_product;
     }
+
+    /**
+     * @inheritdoc
+     */
+    protected function _isAttributeVisible(Mage_Catalog_Model_Resource_Eav_Attribute $attribute, $userType)
+    {
+        return (bool) $attribute->getIsVisible();
+    }
 }
