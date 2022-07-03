@@ -1,7 +1,7 @@
 {
   "name": "elidrissidev/magento-api2basicauth",
   "description": "HTTP Basic authentication support for Magento 1.9 and OpenMage's Api2.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "magento-module",
   "keywords": ["openmage", "openmage-module", "magento", "magento-module"],
   "license": "MIT",
