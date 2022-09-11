@@ -91,7 +91,7 @@ class Elidrissidev_Api2BasicAuth_Block_Adminhtml_Restuser_Edit_Tab_Role extends 
      */
     protected function _getSelectedRole()
     {
-        if (is_null($this->_selectedRole)) {
+        if ($this->_selectedRole === null) {
             $restuser = $this->_getRestuser();
 
             if ($restuser->getId()) {

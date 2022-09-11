@@ -7,7 +7,7 @@ class Mage_Catalog_Model_Api2_Product_Rest_Restuser_V1 extends Mage_Catalog_Mode
      */
     protected function _getProduct()
     {
-        if (is_null($this->_product)) {
+        if ($this->_product === null) {
             $productId = $this->getRequest()->getParam('id');
             /** @var Mage_Catalog_Helper_Product $productHelper */
             $productHelper = Mage::helper('catalog/product');
@@ -43,7 +43,7 @@ class Mage_Catalog_Model_Api2_Product_Rest_Restuser_V1 extends Mage_Catalog_Mode
     {
         $store = $this->getRequest()->getParam('store');
         try {
-            if (is_null($store)) {
+            if ($store === null) {
                 $store = Mage_Catalog_Model_Abstract::DEFAULT_STORE_ID;
             }
             $store = Mage::app()->getStore($store);
