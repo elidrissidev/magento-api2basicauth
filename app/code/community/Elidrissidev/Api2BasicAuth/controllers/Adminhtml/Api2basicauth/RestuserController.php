@@ -125,7 +125,7 @@ class Elidrissidev_Api2BasicAuth_Adminhtml_Api2basicauth_RestuserController exte
             }
 
             if ($id) {
-                $this->_redirect('*/*/edit', array('id' => $id));
+                $this->_redirect('*/*/edit', ['id' => $id]);
             } else {
                 $this->_redirect('*/*/new');
             }
@@ -139,20 +139,20 @@ class Elidrissidev_Api2BasicAuth_Adminhtml_Api2basicauth_RestuserController exte
             $this->_getSession()->addSuccess($this->__('The user has been saved.'));
 
             if ($back) {
-                $this->_redirect('*/*/edit', array('id' => $restuser->getId()));
+                $this->_redirect('*/*/edit', ['id' => $restuser->getId()]);
             } else {
                 $this->_redirect('*/*/');
             }
         } catch (Mage_Core_Exception $e) {
             $this->_getSession()->setRestuserData($postData);
             $this->_getSession()->addError($e->getMessage());
-            $this->_redirect('*/*/edit', array('id' => $id));
+            $this->_redirect('*/*/edit', ['id' => $id]);
             return;
         } catch (Exception $e) {
             Mage::logException($e);
             $this->_getSession()->setRestuserData($postData);
             $this->_getSession()->addError($this->__('An error occurred while saving user.'));
-            $this->_redirect('*/*/edit', array('id' => $id));
+            $this->_redirect('*/*/edit', ['id' => $id]);
             return;
         }
     }
@@ -192,12 +192,12 @@ class Elidrissidev_Api2BasicAuth_Adminhtml_Api2basicauth_RestuserController exte
             $this->_getSession()->addSuccess($this->__('The user has been deleted.'));
         } catch (Mage_Core_Exception $e) {
             $this->_getSession()->addError($e->getMessage());
-            $this->_redirect('*/*/edit', array('id' => $id));
+            $this->_redirect('*/*/edit', ['id' => $id]);
             return;
         } catch (Exception $e) {
             Mage::logException($e);
             $this->_getSession()->addError($this->__('An error occurred while saving user.'));
-            $this->_redirect('*/*/edit', array('id' => $id));
+            $this->_redirect('*/*/edit', ['id' => $id]);
             return;
         }
 

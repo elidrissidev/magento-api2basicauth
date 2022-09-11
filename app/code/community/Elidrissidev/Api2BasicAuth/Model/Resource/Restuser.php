@@ -45,9 +45,9 @@ class Elidrissidev_Api2BasicAuth_Model_Resource_Restuser extends Mage_Core_Model
         $write = $this->_getWriteAdapter();
 
         if ($read->fetchOne($select) === false) {
-            $write->insert($table, array('restuser_id' => $restuserId, 'role_id' => $roleId));
+            $write->insert($table, ['restuser_id' => $restuserId, 'role_id' => $roleId]);
         } else {
-            $write->update($table, array('role_id' => $roleId), array('restuser_id = ?' => $restuserId));
+            $write->update($table, ['role_id' => $roleId], ['restuser_id = ?' => $restuserId]);
         }
 
         return $this;
@@ -90,8 +90,8 @@ class Elidrissidev_Api2BasicAuth_Model_Resource_Restuser extends Mage_Core_Model
         $collection = Mage::getResourceModel('api2/acl_global_role_collection');
         $collection->getSelect()
             ->joinInner(
-                array('acl_restuser' => $this->getTable('elidrissidev_api2basicauth/acl_restuser')),
-                'main_table.entity_id = acl_restuser.role_id',
+                ['acl_restuser' => $this->getTable('elidrissidev_api2basicauth/acl_restuser')],
+                'main_table.entity_id = acl_restuser.role_id'
             )
             ->where('acl_restuser.restuser_id = ?', $restuserId, Zend_Db::INT_TYPE);
 

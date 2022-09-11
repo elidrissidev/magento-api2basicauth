@@ -35,22 +35,22 @@ class Elidrissidev_Api2BasicAuth_Block_Adminhtml_Restuser_Grid extends Mage_Admi
      */
     protected function _prepareColumns()
     {
-        $this->addColumn('entity_id', array(
+        $this->addColumn('entity_id', [
             'header' => $this->__('ID'),
             'index'  => 'entity_id',
             'type'   => 'number',
             'width'  => '50px'
-        ));
-        $this->addColumn('username', array(
+        ]);
+        $this->addColumn('username', [
             'header' => $this->__('Username'),
             'index'  => 'username'
-        ));
-        $this->addColumn('is_active', array(
+        ]);
+        $this->addColumn('is_active', [
             'header'  => $this->__('Active'),
             'index'   => 'is_active',
             'type'    => 'options',
             'options' => Mage::getSingleton('adminhtml/system_config_source_yesno')->toArray()
-        ));
+        ]);
 
         return parent::_prepareColumns();
     }
@@ -64,7 +64,7 @@ class Elidrissidev_Api2BasicAuth_Block_Adminhtml_Restuser_Grid extends Mage_Admi
         if (!Mage::getSingleton('admin/session')->isAllowed('system/api/rest_users/edit')) {
             return '';
         }
-        return $this->getUrl('*/*/edit', array('id' => $item->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $item->getId()]);
     }
 
     /**

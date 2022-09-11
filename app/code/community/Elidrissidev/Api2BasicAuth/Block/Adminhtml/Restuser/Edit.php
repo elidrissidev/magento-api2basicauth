@@ -19,11 +19,11 @@ class Elidrissidev_Api2BasicAuth_Block_Adminhtml_Restuser_Edit extends Mage_Admi
      */
     protected function _prepareLayout()
     {
-        $this->_addButton('save_and_continue', array(
+        $this->_addButton('save_and_continue', [
             'label'     => $this->__('Save and Continue Edit'),
             'onclick'   => 'editForm.submit(\''.$this->_getSaveAndContinueUrl().'\');',
             'class'     => 'save'
-        ), 10);
+        ], 10);
 
         if (!Mage::getSingleton('admin/session')->isAllowed('system/api/rest_users/delete')) {
             $this->_removeButton('delete');
@@ -38,10 +38,10 @@ class Elidrissidev_Api2BasicAuth_Block_Adminhtml_Restuser_Edit extends Mage_Admi
      */
     protected function _getSaveAndContinueUrl()
     {
-        return $this->getUrl('*/*/save', array(
+        return $this->getUrl('*/*/save', [
             '_current' => true,
             'back'     => 'edit'
-        ));
+        ]);
     }
 
     /**

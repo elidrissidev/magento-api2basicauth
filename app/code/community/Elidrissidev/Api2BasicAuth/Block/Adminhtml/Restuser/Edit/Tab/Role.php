@@ -31,7 +31,7 @@ class Elidrissidev_Api2BasicAuth_Block_Adminhtml_Restuser_Edit_Tab_Role extends 
     {
         /** @var Mage_Api2_Model_Resource_Acl_Global_Role_Collection $collection */
         $collection = Mage::getResourceModel('api2/acl_global_role_collection');
-        $collection->addFieldToFilter('entity_id', array('nin' => Mage_Api2_Model_Acl_Global_Role::getSystemRoles()));
+        $collection->addFieldToFilter('entity_id', ['nin' => Mage_Api2_Model_Acl_Global_Role::getSystemRoles()]);
 
         $this->setCollection($collection);
 
@@ -43,20 +43,20 @@ class Elidrissidev_Api2BasicAuth_Block_Adminhtml_Restuser_Edit_Tab_Role extends 
      */
     protected function _prepareColumns()
     {
-        $this->addColumn('assigned_user_role', array(
+        $this->addColumn('assigned_user_role', [
             'header_css_class' => 'a-center',
             'header'    => Mage::helper('api2')->__('Assigned'),
             'type'      => 'radio',
             'html_name' => 'role_id',
-            'values'    => array($this->_getSelectedRole()),
+            'values'    => [$this->_getSelectedRole()],
             'align'     => 'center',
             'index'     => 'entity_id'
-        ));
+        ]);
 
-        $this->addColumn('role_name', array(
+        $this->addColumn('role_name', [
             'header' => Mage::helper('api2')->__('Role Name'),
             'index'  => 'role_name'
-        ));
+        ]);
 
         return parent::_prepareColumns();
     }
@@ -75,7 +75,7 @@ class Elidrissidev_Api2BasicAuth_Block_Adminhtml_Restuser_Edit_Tab_Role extends 
             if ($column->getFilter()->getValue()) {
                 $collection->addFieldToFilter('entity_id', $roleId);
             } elseif ($roleId) {
-                $collection->addFieldToFilter('entity_id', array('neq' => $roleId));
+                $collection->addFieldToFilter('entity_id', ['neq' => $roleId]);
             }
         } else {
             parent::_addColumnFilterToCollection($column);
@@ -150,6 +150,6 @@ class Elidrissidev_Api2BasicAuth_Block_Adminhtml_Restuser_Edit_Tab_Role extends 
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/rolesGrid', array('_current' => true));
+        return $this->getUrl('*/*/rolesGrid', ['_current' => true]);
     }
 }

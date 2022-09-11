@@ -17,13 +17,13 @@ class Elidrissidev_Api2BasicAuth_Block_Adminhtml_Restuser_Edit_Form extends Mage
         /** @var Elidrissidev_Api2BasicAuth_Model_Restuser $restuser */
         $restuser = Mage::registry('current_restuser');
 
-        $params = $restuser->getId() ? array('id' => $restuser->getId()) : array();
+        $params = $restuser->getId() ? ['id' => $restuser->getId()] : [];
 
-        $form = new Varien_Data_Form(array(
+        $form = new Varien_Data_Form([
             'id'     => 'edit_form',
             'action' => $this->getUrl('*/*/save', $params),
             'method' => 'post'
-        ));
+        ]);
         $form->setUseContainer(true);
 
         $this->setForm($form);
